@@ -1,27 +1,3 @@
-================================== BOOKMARK SERVER ===================================
-= #-------------------------------------------------------------------------------   =
-= # Name:       BOOKMARK SERVER                                                      =
-= # Purpose:    A simple Python Server for a Web Service, Deployed on Heroku         =                                                        =
-= #                                                                                  =
-= # Author:      Precious Adeyinka                                                   =
-= # Repo:        https://github.com/precious-adeyinka/herokuServer                   =                                                              =
-= # Created:     11/12/2018                                                          =              
-= # Copyright:   (c) Pflash 2018                                                     =
-= # Licence:     <your licence>                                                      =
-= #-------------------------------------------------------------------------------   =
-=                                                                                    =
-=                                                                                    =
-=                                                                                    =
-=                                                                                    =
-=                                                                                    =
-=                                                                                    =
-=                                                                                    =
-=                                                                                    =
-=                                                                                    =
-=                                                                                    =
-=                                                                                    =
-======================================================================================
-
 #!/usr/bin/env python3
 #
 # A *bookmark server* or URI shortener.
