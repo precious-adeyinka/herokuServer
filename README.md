@@ -12,7 +12,9 @@
 * Create your Heroku app: heroku create your-app-name
 * Push your code to Heroku with Git: ```git push heroku master```
 
-# Usage Explanation - Detail Explanation of the Stepd to Deployment:
+# Usage Explanation - 
+### Detail Explanation of the Steps to Deployment:
+
 Check in your code
 
 Heroku (and many other web hosting services) works closely with Git: you can deploy a particular version of your code to Heroku by pushing it with the ```git push command```. So in order to deploy your code, it first needs to be checked into a local Git repository.
