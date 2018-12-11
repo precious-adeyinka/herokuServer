@@ -1,13 +1,48 @@
+================================== BOOKMARK SERVER ===================================
+= #-------------------------------------------------------------------------------   =
+= # Name:       BOOKMARK SERVER                                                      =
+= # Purpose:    A simple Python Server for a Web Service, Deployed on Heroku         =                                                        =
+= #                                                                                  =
+= # Author:      Precious Adeyinka                                                   =
+= # Repo:        https://github.com/precious-adeyinka/herokuServer                   =                                                              =
+= # Created:     11/12/2018                                                          =              
+= # Copyright:   (c) Pflash 2018                                                     =
+= # Licence:     <your licence>                                                      =
+= #-------------------------------------------------------------------------------   =
+=                                                                                    =
+=                                                                                    =
+=                                                                                    =
+=                                                                                    =
+=                                                                                    =
+=                                                                                    =
+=                                                                                    =
+=                                                                                    =
+=                                                                                    =
+=                                                                                    =
+=                                                                                    =
+======================================================================================
+
 #!/usr/bin/env python3
 #
 # A *bookmark server* or URI shortener.
 
+# Import the python http.server librar/module - For creating Web Servers - That can listen and respond to
+# incoming HTTP request/Traffic on a port over the internet
 import http.server
+
+# Import the python request module - Creating programs that acts like a client - making HTTP requests
 import requests
+
+# Import the python urllib module - Used for performing various tasks on HTTP Request urls
 from urllib.parse import unquote, parse_qs
 
+# Import the python os environment library(dictionary) - Which have access to all environment variables
+import os
+
+# Creating a memory for the server - Stores the users message through the HTTP POST verb/method
 memory = {}
 
+# Creating the HTML form code snippet - Requested with the HTTP GET method as the root page
 form = '''<!DOCTYPE html>
 <title>Bookmark Server</title>
 <form method="POST">
@@ -27,7 +62,8 @@ form = '''<!DOCTYPE html>
 </pre>
 '''
 
-
+# Creates a function to check if the URI entered by the user is valid - It uses the requests module
+# To send a GET request to the server(uri) under the hood to validate the entered URI
 def CheckURI(uri, timeout=5):
     '''Check whether this URI is reachable, i.e. does it return a 200 OK?
 
@@ -43,7 +79,7 @@ def CheckURI(uri, timeout=5):
         # If the GET request raised an exception, it's not OK.
         return False
 
-
+# Creates a class to shorten the entered URI
 class Shortener(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
         # A GET request will either be for / (the root path) or for /some-name.
@@ -105,7 +141,13 @@ class Shortener(http.server.BaseHTTPRequestHandler):
             self.wfile.write(
                 "Couldn't fetch URI '{}'. Sorry!".format(longuri).encode())
 
+#if __name__ == '__main__':
+#    server_address = ('', 8000)
+#    httpd = http.server.HTTPServer(server_address, Shortener)
+#    httpd.serve_forever()
+
 if __name__ == '__main__':
-    server_address = ('', 8000)
+    port = int(os.environ.get('PORT', 8000))   # Use PORT if it's there.
+    server_address = ('', port)
     httpd = http.server.HTTPServer(server_address, Shortener)
     httpd.serve_forever()
