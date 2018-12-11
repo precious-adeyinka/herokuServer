@@ -4,8 +4,8 @@
 ## Steps to deployment
 
 * Check your server code into a new local Git repository.
-* Sign up for a free Heroku account.
-* Download the Heroku command-line interface (CLI).
+* [Signup here](https://signup.heroku.com/dc) for a free Heroku account.
+* Download the Heroku [command-line interface](https://devcenter.heroku.com/articles/heroku-cli) (CLI).
 * Authenticate the Heroku CLI with your account: heroku login
 * Create configuration files ```Procfile```, ```requirements.txt```, and ```runtime.txt``` and check them into your Git repository.
 * Modify your server to listen on a configurable port.
