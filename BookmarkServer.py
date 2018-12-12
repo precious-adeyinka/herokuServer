@@ -15,6 +15,15 @@ from urllib.parse import unquote, parse_qs
 # Import the python os environment library(dictionary) - Which have access to all environment variables
 import os
 
+# Import threading module - Overrides the "http.server.HTTPServer" class inability to handle more than one task. 
+# Implements Concurrency - Ability to handle two ongoing tasks at same time.
+import threading
+from socketserver import ThreadingMixIn
+
+# ThreadHTTPServer class
+class ThreadHTTPServer(ThreadingMixIn, http.server.HTTPServer):
+    "This is an HTTPServer that supports thread-based concurrency."
+
 # Creating a memory for the server - Stores the users message through the HTTP POST verb/method
 memory = {}
 
@@ -125,5 +134,8 @@ class Shortener(http.server.BaseHTTPRequestHandler):
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 8000))   # Use PORT if it's there.
     server_address = ('', port)
-    httpd = http.server.HTTPServer(server_address, Shortener)
+    # httpd = http.server.HTTPServer(server_address, Shortener)
+    # Creates a threadHTTPServer instead - Implementing Concurrency
+    httpd = ThreadHTTPServer(server_address, Shortener)
     httpd.serve_forever()
+
